@@ -1,7 +1,5 @@
 package com.nightvigilance.nvBackend.model;
 
-//import javax.persistence.*;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -22,14 +20,15 @@ public class Members {
     private String contact;
     private String hod;
     private String reportingOfficer;
-    @Column(name="is_team_head",columnDefinition = "tinyint(1) default 0")
+
+    @Column(name="is_team_head", columnDefinition = "BIT(1)")
     private Boolean isTeamHead;
 
-    @Column(name="is_shift_incharge",columnDefinition = "tinyint(1) default 0")
-    private boolean isShiftIncharge;
+    @Column(name="is_shift_incharge", columnDefinition = "BIT(1)")
+    private Boolean isShiftIncharge;
 
-    @Column(name="is_sec_staff",columnDefinition = "tinyint(1) default 0")
-    private boolean isSecStaff;
+    @Column(name="is_sec_staff", columnDefinition = "BIT(1)")
+    private Boolean isSecStaff;
 
     // Getters and Setters
     public int getId() {
@@ -112,35 +111,27 @@ public class Members {
         this.reportingOfficer = reportingOfficer;
     }
 
-    public boolean isTeamHead() {
+    public Boolean getIsTeamHead() {
         return isTeamHead;
     }
 
-    public void setTeamHead(boolean teamHead) {
-        isTeamHead = teamHead;
+    public void setIsTeamHead(Boolean isTeamHead) {
+        this.isTeamHead = isTeamHead;
     }
 
-    public boolean isShiftIncharge() {
+    public Boolean getIsShiftIncharge() {
         return isShiftIncharge;
     }
 
-    public void setShiftIncharge(boolean isShiftIncharge) {
+    public void setIsShiftIncharge(Boolean isShiftIncharge) {
         this.isShiftIncharge = isShiftIncharge;
     }
 
-    public Boolean getTeamHead() {
-        return isTeamHead;
-    }
-
-    public boolean isSecStaff() {
+    public Boolean getIsSecStaff() {
         return isSecStaff;
     }
 
-    public void setSecStaff(boolean secStaff) {
-        isSecStaff = secStaff;
-    }
-
-    public void setTeamHead(Boolean teamHead) {
-        isTeamHead = teamHead;
+    public void setIsSecStaff(Boolean isSecStaff) {
+        this.isSecStaff = isSecStaff;
     }
 }

@@ -1,5 +1,7 @@
 package com.nightvigilance.nvBackend.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class MemberDTO {
     private String memberName;
     private String mail;
@@ -9,8 +11,14 @@ public class MemberDTO {
     private String contact;
     private String hod;
     private String reportingOfficer;
+
+    @JsonProperty("isTeamHead")
     private boolean isTeamHead;
+
+    @JsonProperty("isShiftIncharge")
     private boolean isShiftIncharge;
+
+    @JsonProperty("isSecStaff")
     private boolean isSecStaff;
 
     // Getters and Setters
@@ -82,23 +90,23 @@ public class MemberDTO {
         return isTeamHead;
     }
 
-    public void setTeamHead(boolean teamHead) {
-        isTeamHead = teamHead;
+    public void setTeamHead(boolean isTeamHead) {
+        this.isTeamHead = isTeamHead;
     }
 
     public boolean isShiftIncharge() {
         return isShiftIncharge;
     }
 
-    public void setShiftIncharge(boolean shiftIncharge) {
-        isShiftIncharge = shiftIncharge;
+    public void setShiftIncharge(boolean isShiftIncharge) {
+        this.isShiftIncharge = isShiftIncharge;
     }
 
     public boolean isSecStaff() {
         return isSecStaff;
     }
 
-    public void setSecStaff(boolean secStaff) {
-        isSecStaff = secStaff;
+    public void setSecStaff(boolean isSecStaff) {
+        this.isSecStaff = isSecStaff;
     }
 }

@@ -9,7 +9,22 @@ public class User {
     private int id;
     private String userName;
     private String userMail;
+    private String role = "USER";  // Default role
 
+    @ManyToOne
+    @JoinColumn(name = "dept_id", referencedColumnName = "id")
+    private Dept dept;
+
+    @ManyToOne
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private LOC location;
+
+    @ManyToOne
+    @JoinColumn(name = "designation_id", referencedColumnName = "id")
+    private Desig designation;
+
+    // Getters and Setters
+    // ...
     public int getId() {
         return id;
     }
@@ -32,6 +47,14 @@ public class User {
 
     public void setUserMail(String userMail) {
         this.userMail = userMail;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Dept getDept() {
@@ -57,18 +80,4 @@ public class User {
     public void setDesignation(Desig designation) {
         this.designation = designation;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "dept_id", referencedColumnName = "id")
-    private Dept dept;
-
-    @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
-    private LOC location;
-
-    @ManyToOne
-    @JoinColumn(name = "designation_id", referencedColumnName = "id")
-    private Desig designation;
-
-    // Getters and Setters
 }
