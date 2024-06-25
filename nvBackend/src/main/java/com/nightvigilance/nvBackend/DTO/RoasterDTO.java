@@ -4,8 +4,25 @@ import java.util.List;
 
 public class RoasterDTO {
     private String dateTime;
-    private int actionId;
     private List<MemberDTO> members;
+    private String createdBy;
+    private String updatedBy;
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 
     // Getters and Setters
     public String getDateTime() {
@@ -16,13 +33,6 @@ public class RoasterDTO {
         this.dateTime = dateTime;
     }
 
-    public int getActionId() {
-        return actionId;
-    }
-
-    public void setActionId(int actionId) {
-        this.actionId = actionId;
-    }
 
     public List<MemberDTO> getMembers() {
         return members;

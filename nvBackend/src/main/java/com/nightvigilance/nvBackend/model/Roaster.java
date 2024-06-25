@@ -7,19 +7,66 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
+@Table(name = "roaster")
 public class Roaster {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "action_id")
-    private Action action;
 
     private Timestamp dateTime;
 
-    @OneToMany(mappedBy = "roaster", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "roaster", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Members> members;
+
+
+    private String createdBy;
+    private Timestamp createdOn;
+
+    private String updatedBy;
+    private Timestamp updatedOn;
+    private boolean deleteFlag = false;
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Timestamp getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(Timestamp updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+
+    public boolean isDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
+    }
+
 
     // Getters and Setters
 
@@ -31,13 +78,6 @@ public class Roaster {
         this.id = id;
     }
 
-    public Action getAction() {
-        return action;
-    }
-
-    public void setAction(Action action) {
-        this.action = action;
-    }
 
     public Timestamp getDateTime() {
         return dateTime;

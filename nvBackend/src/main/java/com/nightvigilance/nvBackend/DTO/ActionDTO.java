@@ -1,24 +1,64 @@
 package com.nightvigilance.nvBackend.DTO;
 
+import java.time.LocalDateTime;
+
 public class ActionDTO {
-    private int id;
     private String empName;
     private int empId;
-    private int desigId;
-    private int deptId;
+    private String desig;
+    private String dept;
     private int locId;
     private String email;
-    private int actionImgId;
     private String actionName;
+    private int roasterId;
 
-    public int getId() {
-        return id;
+    private String createdBy;
+    private LocalDateTime createdOn;
+    private String updatedBy;
+    private LocalDateTime updatedOn;
+    private boolean deleteFlag;
+
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
+    public LocalDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public LocalDateTime getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(LocalDateTime updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+
+    public boolean isDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
+    }
+
+    // Getters and Setters
     public String getEmpName() {
         return empName;
     }
@@ -35,20 +75,20 @@ public class ActionDTO {
         this.empId = empId;
     }
 
-    public int getDesigId() {
-        return desigId;
+    public String getDesig() {
+        return desig;
     }
 
-    public void setDesigId(int desigId) {
-        this.desigId = desigId;
+    public void setDesig(String desig) {
+        this.desig = desig;
     }
 
-    public int getDeptId() {
-        return deptId;
+    public String getDept() {
+        return dept;
     }
 
-    public void setDeptId(int deptId) {
-        this.deptId = deptId;
+    public void setDept(String dept) {
+        this.dept = dept;
     }
 
     public int getLocId() {
@@ -67,14 +107,6 @@ public class ActionDTO {
         this.email = email;
     }
 
-    public int getActionImgId() {
-        return actionImgId;
-    }
-
-    public void setActionImgId(int actionImgId) {
-        this.actionImgId = actionImgId;
-    }
-
     public String getActionName() {
         return actionName;
     }
@@ -83,5 +115,11 @@ public class ActionDTO {
         this.actionName = actionName;
     }
 
+    public int getRoasterId() {
+        return roasterId;
+    }
 
+    public void setRoasterId(int roasterId) {
+        this.roasterId = roasterId;
+    }
 }

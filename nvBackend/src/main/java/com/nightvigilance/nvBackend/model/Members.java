@@ -3,13 +3,14 @@ package com.nightvigilance.nvBackend.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "members")
 public class Members {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "roaster_id")
+    @JoinColumn(name = "roaster_id", nullable = false)
     private Roaster roaster;
 
     private String memberName;
@@ -29,6 +30,8 @@ public class Members {
 
     @Column(name="is_sec_staff", columnDefinition = "BIT(1)")
     private Boolean isSecStaff;
+
+
 
     // Getters and Setters
     public int getId() {

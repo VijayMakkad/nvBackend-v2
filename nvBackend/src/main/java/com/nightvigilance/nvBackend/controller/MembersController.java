@@ -27,7 +27,24 @@ public class MembersController {
     public Members saveMembers(@RequestBody Members members) {
         return membersService.saveMember(members); // Use saveMember instead of saveMembers
     }
+    @PutMapping("/{id}")
+    public Members updateMember(@PathVariable int id, @RequestBody Members member) {
+        Members existingMember = membersService.getMembersById(id);
+        if (existingMember == null) {
+            return null; // Ideally, return a proper error response
+        }
 
+        existingMember.setMemberName(member.getMemberName());
+        existingMember.setMail(member.getMail());
+        existingMember.setEmpCode(member.getEmpCode());
+        existingMember.setContact(member.getContact());
+        existingMember.setHod(member.getHod());
+        existingMember.setReportingOfficer(member.getReportingOfficer());
+        existingMember.setDepartment(member.getDepartment());
+        existingMember.setDesig(member.getDesig());
+
+        return membersService.saveMember(existingMember);
+    }
 
     @DeleteMapping("/{id}")
     public void deleteMembers(@PathVariable int id) {

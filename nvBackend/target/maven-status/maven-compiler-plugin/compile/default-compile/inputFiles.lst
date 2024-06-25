@@ -1,4 +1,5 @@
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\controller\ActionController.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\controller\AuthController.java
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\controller\DeptController.java
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\controller\DesigController.java
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\controller\ImgController.java
@@ -8,6 +9,16 @@ C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBa
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\controller\RoleController.java
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\controller\UserController.java
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\controller\UserRoleController.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\ActionDTO.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\DeptDTO.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\DesigDTO.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\ImgDTO.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\LOCDTO.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\MemberDTO.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\RoasterDTO.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\RoleDTO.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\UserDTO.java
+C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\DTO\UserRoleDTO.java
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\model\Action.java
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\model\Dept.java
 C:\Users\vijay\Desktop\nvBackend\nvBackend\src\main\java\com\nightvigilance\nvBackend\model\Desig.java

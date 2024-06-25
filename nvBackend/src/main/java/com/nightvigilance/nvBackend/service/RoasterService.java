@@ -26,6 +26,10 @@ public class RoasterService {
     }
 
     public void deleteRoaster(int id) {
-        roasterRepository.deleteById(id);
+        Roaster roaster = roasterRepository.findById(id).orElse(null);
+        if (roaster != null) {
+            roaster.setDeleteFlag(true);
+            roasterRepository.save(roaster);
+        }
     }
 }
