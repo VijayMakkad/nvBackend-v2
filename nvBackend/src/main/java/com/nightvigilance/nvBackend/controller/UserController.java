@@ -1,37 +1,53 @@
 package com.nightvigilance.nvBackend.controller;
 
+import com.nightvigilance.nvBackend.DTO.UserDTO;
 import com.nightvigilance.nvBackend.model.User;
 import com.nightvigilance.nvBackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/users")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
+        User existingUser = userService.findUserByUserMail(userDTO.getUserMail());
+        if (existingUser != null) {
+            return ResponseEntity.badRequest().body("User already exists");
+        }
+        
+        // Hash the password before registration
+        String hashedPassword = userService.encodePassword(userDTO.getPassword());
+        User user = userService.registerUser(userDTO.getUserMail(), userDTO.getUserName(), hashedPassword);
+        
+        return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody UserDTO userDTO) {
+        User user = userService.findUserByUserMail(userDTO.getUserMail());
+        if (user == null || !userService.checkPassword(userDTO.getPassword(), user.getPassword())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        }
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable int id) {
+    public ResponseEntity<?> getUserById(@PathVariable int id) {
         Optional<User> user = userService.getUserById(id);
-        return user.orElse(null); // Return user if present, otherwise return null or handle appropriately
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public User saveUser(@RequestBody User user) {
-        return userService.saveUser(user);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable int id) {
-        userService.deleteUser(id);
+    @GetMapping
+    public ResponseEntity<?> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 }

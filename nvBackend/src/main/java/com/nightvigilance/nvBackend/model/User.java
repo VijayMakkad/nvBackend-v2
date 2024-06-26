@@ -1,15 +1,22 @@
 package com.nightvigilance.nvBackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String userName;
     private String userMail;
-    private String role = "USER";  // Default role
+
+    @JsonIgnore // Prevent password from being serialized to JSON responses
+    private String password;
+
+    private String role = "USER";  
 
     @ManyToOne
     @JoinColumn(name = "dept_id", referencedColumnName = "id")
@@ -24,7 +31,6 @@ public class User {
     private Desig designation;
 
     // Getters and Setters
-    // ...
     public int getId() {
         return id;
     }
@@ -47,6 +53,14 @@ public class User {
 
     public void setUserMail(String userMail) {
         this.userMail = userMail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRole() {
