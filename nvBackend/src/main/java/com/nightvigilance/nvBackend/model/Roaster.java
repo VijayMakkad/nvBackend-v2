@@ -1,8 +1,6 @@
 package com.nightvigilance.nvBackend.model;
 
 import jakarta.persistence.*;
-
-//import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -13,19 +11,43 @@ public class Roaster {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
     private Timestamp dateTime;
 
     @OneToMany(mappedBy = "roaster", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Members> members;
 
-
     private String createdBy;
     private Timestamp createdOn;
-
     private String updatedBy;
     private Timestamp updatedOn;
     private boolean deleteFlag = false;
+    private String location; // New field
+
+    // Getters and Setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Timestamp getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Timestamp dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public List<Members> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Members> members) {
+        this.members = members;
+    }
 
     public String getCreatedBy() {
         return createdBy;
@@ -67,31 +89,11 @@ public class Roaster {
         this.deleteFlag = deleteFlag;
     }
 
-
-    // Getters and Setters
-
-    public int getId() {
-        return id;
+    public String getLocation() {
+        return location;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public Timestamp getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(Timestamp dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public List<Members> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Members> members) {
-        this.members = members;
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

@@ -25,36 +25,30 @@ public class RoasterController {
     @Autowired
     private MembersService membersService;
 
-
     @PostMapping
     public Roaster addRoaster(@RequestBody String roasterDTOJson) {
-        // Log the received JSON
         System.out.println("Received JSON: " + roasterDTOJson);
 
-        // Deserialize the JSON string to RoasterDTO
         ObjectMapper objectMapper = new ObjectMapper();
         RoasterDTO roasterDTO = null;
         try {
             roasterDTO = objectMapper.readValue(roasterDTOJson, RoasterDTO.class);
         } catch (Exception e) {
             e.printStackTrace();
-            // Handle the exception (e.g., return an error response)
-            return null; // Ideally, return a proper error response
+            return null;
         }
 
-        // Existing logic to create and save Roaster
         Roaster roaster = new Roaster();
         roaster.setDateTime(Timestamp.valueOf(LocalDateTime.parse(roasterDTO.getDateTime())));
-
         roaster.setCreatedBy(roasterDTO.getCreatedBy());
         roaster.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
         roaster.setDeleteFlag(false);
+        roaster.setLocation(roasterDTO.getLocation()); // Set location
 
         Roaster savedRoaster = roasterService.saveRoaster(roaster);
 
         List<Members> membersList = new ArrayList<>();
         for (MemberDTO memberDTO : roasterDTO.getMembers()) {
-            // Log deserialized values
             System.out.println("Deserialized MemberDTO: " + memberDTO.getMemberName());
             System.out.println("isTeamHead: " + memberDTO.isTeamHead());
             System.out.println("isShiftIncharge: " + memberDTO.isShiftIncharge());
@@ -74,7 +68,6 @@ public class RoasterController {
             member.setIsShiftIncharge(memberDTO.isShiftIncharge());
             member.setIsSecStaff(memberDTO.isSecStaff());
 
-            // Log values before persisting
             System.out.println("Persisting Member: " + member.getMemberName());
             System.out.println("isTeamHead: " + member.getIsTeamHead());
             System.out.println("isShiftIncharge: " + member.getIsShiftIncharge());
@@ -87,6 +80,7 @@ public class RoasterController {
 
         return savedRoaster;
     }
+
     @PutMapping("/{id}")
     public Roaster updateRoaster(@PathVariable int id, @RequestBody String roasterDTOJson) {
         System.out.println("Received JSON: " + roasterDTOJson);
@@ -108,6 +102,7 @@ public class RoasterController {
         roaster.setDateTime(Timestamp.valueOf(LocalDateTime.parse(roasterDTO.getDateTime())));
         roaster.setUpdatedBy(roasterDTO.getUpdatedBy());
         roaster.setUpdatedOn(Timestamp.valueOf(LocalDateTime.now()));
+        roaster.setLocation(roasterDTO.getLocation()); // Update location
 
         List<Members> existingMembers = roaster.getMembers();
         List<Members> updatedMembers = new ArrayList<>();
