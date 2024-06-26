@@ -7,6 +7,24 @@ public class RoasterDTO {
     private List<MemberDTO> members;
     private String createdBy;
     private String updatedBy;
+    private String location; // New field
+
+    // Getters and Setters
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public List<MemberDTO> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<MemberDTO> members) {
+        this.members = members;
+    }
 
     public String getCreatedBy() {
         return createdBy;
@@ -24,21 +42,11 @@ public class RoasterDTO {
         this.updatedBy = updatedBy;
     }
 
-    // Getters and Setters
-    public String getDateTime() {
-        return dateTime;
+    public String getLocation() {
+        return location;
     }
 
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
-
-
-    public List<MemberDTO> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<MemberDTO> members) {
-        this.members = members;
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
