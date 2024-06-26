@@ -48,6 +48,8 @@ public class ActionController {
         action.setDesig(actionDTO.getDesig());
         action.setEmail(actionDTO.getEmail());
         action.setActionName(actionDTO.getActionName());
+        action.setContactNo(actionDTO.getContactNo());
+        action.setReportingOfficer(actionDTO.getReportingOfficer());
 
         // Fetch the Roaster by id
         Roaster roaster = roasterService.getRoasterById(actionDTO.getRoasterId()).orElse(null);
@@ -63,18 +65,20 @@ public class ActionController {
         action.setUpdatedOn(actionDTO.getUpdatedOn() != null ? actionDTO.getUpdatedOn() : LocalDateTime.now());
         action.setDeleteFlag(actionDTO.isDeleteFlag());
 
-
         // Save Action
         return actionService.saveAction(action);
     }
+
     @GetMapping("/{id}")
     public Action getActionById(@PathVariable int id) {
         return actionService.getActionById(id);
     }
+
     @PostMapping("/{actionId}/images")
     public Img addImageToAction(@PathVariable int actionId, @RequestBody Img img) {
         return actionService.addImageToAction(actionId, img);
     }
+
     @DeleteMapping("/{id}")
     public void deleteAction(@PathVariable int id) {
         actionService.deleteAction(id);

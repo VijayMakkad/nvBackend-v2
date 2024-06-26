@@ -3,6 +3,7 @@ package com.nightvigilance.nvBackend.service;
 import com.nightvigilance.nvBackend.model.User;
 import com.nightvigilance.nvBackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +15,24 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User registerUser(String userMail, String userName) {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public User registerUser(String userMail, String userName, String password) {
+        User existingUser = userRepository.findByUserMail(userMail);
+        if (existingUser != null) {
+            throw new RuntimeException("User already exists");
+        }
+
+        String hashedPassword = passwordEncoder.encode(password);
+
         User user = new User();
         user.setUserMail(userMail);
         user.setUserName(userName);
+        user.setPassword(hashedPassword);
+
         userRepository.save(user);
+
         return user;
     }
 
@@ -40,5 +54,13 @@ public class UserService {
 
     public void deleteUser(int id) {
         userRepository.deleteById(id);
+    }
+
+    public boolean checkPassword(String plainPassword, String hashedPassword) {
+        return passwordEncoder.matches(plainPassword, hashedPassword);
+    }
+
+    public String encodePassword(String password) {
+        return passwordEncoder.encode(password);
     }
 }

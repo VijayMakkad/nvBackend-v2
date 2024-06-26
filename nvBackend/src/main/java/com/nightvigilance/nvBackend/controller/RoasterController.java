@@ -43,17 +43,12 @@ public class RoasterController {
         roaster.setCreatedBy(roasterDTO.getCreatedBy());
         roaster.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
         roaster.setDeleteFlag(false);
-        roaster.setLocation(roasterDTO.getLocation()); // Set location
+        roaster.setLocation(roasterDTO.getLocation());
 
         Roaster savedRoaster = roasterService.saveRoaster(roaster);
 
         List<Members> membersList = new ArrayList<>();
         for (MemberDTO memberDTO : roasterDTO.getMembers()) {
-            System.out.println("Deserialized MemberDTO: " + memberDTO.getMemberName());
-            System.out.println("isTeamHead: " + memberDTO.isTeamHead());
-            System.out.println("isShiftIncharge: " + memberDTO.isShiftIncharge());
-            System.out.println("isSecStaff: " + memberDTO.isSecStaff());
-
             Members member = new Members();
             member.setRoaster(savedRoaster);
             member.setMemberName(memberDTO.getMemberName());
@@ -67,11 +62,6 @@ public class RoasterController {
             member.setIsTeamHead(memberDTO.isTeamHead());
             member.setIsShiftIncharge(memberDTO.isShiftIncharge());
             member.setIsSecStaff(memberDTO.isSecStaff());
-
-            System.out.println("Persisting Member: " + member.getMemberName());
-            System.out.println("isTeamHead: " + member.getIsTeamHead());
-            System.out.println("isShiftIncharge: " + member.getIsShiftIncharge());
-            System.out.println("isSecStaff: " + member.getIsSecStaff());
 
             membersList.add(membersService.saveMember(member));
         }
@@ -102,7 +92,7 @@ public class RoasterController {
         roaster.setDateTime(Timestamp.valueOf(LocalDateTime.parse(roasterDTO.getDateTime())));
         roaster.setUpdatedBy(roasterDTO.getUpdatedBy());
         roaster.setUpdatedOn(Timestamp.valueOf(LocalDateTime.now()));
-        roaster.setLocation(roasterDTO.getLocation()); // Update location
+        roaster.setLocation(roasterDTO.getLocation());
 
         List<Members> existingMembers = roaster.getMembers();
         List<Members> updatedMembers = new ArrayList<>();

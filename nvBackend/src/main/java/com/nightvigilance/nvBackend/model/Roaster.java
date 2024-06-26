@@ -21,7 +21,7 @@ public class Roaster {
     private String updatedBy;
     private Timestamp updatedOn;
     private boolean deleteFlag = false;
-    private String location; // New field
+    private String location;
 
     // Getters and Setters
 

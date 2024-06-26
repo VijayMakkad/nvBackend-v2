@@ -29,6 +29,7 @@ com\nightvigilance\nvBackend\controller\RoasterController.class
 com\nightvigilance\nvBackend\model\Action.class
 com\nightvigilance\nvBackend\service\DeptService.class
 com\nightvigilance\nvBackend\DTO\DeptDTO.class
+com\nightvigilance\nvBackend\config\SecurityConfig.class
 com\nightvigilance\nvBackend\controller\AuthController.class
 com\nightvigilance\nvBackend\model\Dept.class
 com\nightvigilance\nvBackend\controller\RoleController.class

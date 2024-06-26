@@ -7,6 +7,7 @@ import com.nightvigilance.nvBackend.repository.ImgRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class ActionService {
     @Autowired
     private ActionRepository actionRepository;
+
     @Autowired
     private ImgRepository imgRepository;
 
@@ -24,6 +26,7 @@ public class ActionService {
     public Action getActionById(int id) {
         return actionRepository.findById(id).orElse(null);
     }
+
     public Img addImageToAction(int actionId, Img img) {
         Action action = getActionById(actionId);
         if (action != null) {
@@ -33,6 +36,7 @@ public class ActionService {
             throw new RuntimeException("Action not found");
         }
     }
+
     public void deleteAction(int id) {
         Optional<Action> action = actionRepository.findById(id);
         if (action.isPresent()) {

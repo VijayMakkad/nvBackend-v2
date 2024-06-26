@@ -4,6 +4,7 @@ public class UserDTO {
     private int id;
     private String userName;
     private String userMail;
+    private String password; // Added for secure password handling
     private int deptId;
     private int locationId;
     private int designationId;
@@ -54,5 +55,13 @@ public class UserDTO {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
