@@ -1,0 +1,1 @@
+SELECT * FROM nv2.user;
